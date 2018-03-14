@@ -5,7 +5,7 @@ derivation:
 mot -> list mot
 
 regle:
-regex (match) -> POS  -> ensemble de tranformations
+regex -> POS -> ensemble de tranformations
 
 1. traiter les cas particulier
 2. traiter les regexps des plus précis (plus longs) aux plus généraux
