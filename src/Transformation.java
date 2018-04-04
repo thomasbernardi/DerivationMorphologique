@@ -8,8 +8,8 @@ public class Transformation {
         this.newEnding = newEnding;
     }
 
-    public Mot apply(String mot) {
+    public Word apply(String mot) {
         String base = mot.substring(0, mot.length() - ending);
-        return new Mot(base + newEnding, newPos);
+        return new Word(base + newEnding, newPos);
     }
 }

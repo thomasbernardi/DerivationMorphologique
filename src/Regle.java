@@ -1,4 +1,3 @@
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.*;
@@ -29,7 +28,7 @@ public class Regle {
         }
     }
 
-    public boolean match (Mot mot) {
+    public boolean match (Word mot) {
         return Pattern.matches(ending, mot.getNom())
                 && transformations.containsKey(mot.getPos());
     }
@@ -39,7 +38,7 @@ public class Regle {
      * @param mot qui va etre tranforme
      * @return ensemble de tous les tranformations de "mot" selon cette regle
      */
-    public Set<Mot> transformations(Mot mot) {
+    public Set<Word> transformations(Word mot) {
         Set<Transformation> toApply = transformations.get(mot.getPos());
         return toApply.stream()
                 .map(transformation -> transformation.apply(mot.getNom()))
