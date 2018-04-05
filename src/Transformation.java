@@ -12,4 +12,8 @@ public class Transformation {
         String base = mot.substring(0, mot.length() - ending);
         return new Word(base + newEnding, newPos);
     }
+
+    public String toString() {
+        return ending + " -> " + newEnding + " :: " + newPos.name();
+    }
 }
