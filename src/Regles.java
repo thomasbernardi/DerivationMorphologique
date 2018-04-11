@@ -10,17 +10,17 @@ public class Regles {
         this.regles = regles;
     }
 
-    public Optional<Set<Word>> apply (String mot) {
+    public Optional<Set<Transformation>> apply (String mot) {
 
-        Optional<Set<Word>> result = Optional.empty();
+        Optional<Set<Transformation>> result = Optional.empty();
         Set<Word> possible = Word.motsPossibles(mot);
 
         if (casParticuliers.containsKey(mot)) {
-            Set<Word> s = new HashSet<>();
-            s.add(casParticuliers.get(mot).apply(mot));
+            Set<Transformation> s = new HashSet<>();
+            s.add(casParticuliers.get(mot));
             result = Optional.of(s);
         } else {
-            Set<Word> transformed = new HashSet<>();
+            Set<Transformation> transformed = new HashSet<>();
             for (int i = 0; i < regles.size() && !result.isPresent(); i++) {
                 Regle r = regles.get(i);
                 for (Iterator<Word> it = possible.iterator(); it.hasNext();) {
@@ -67,7 +67,7 @@ public class Regles {
                 if (!forward.containsKey(posIn.get())) {
                     forward.put(posIn.get(), new HashSet<>());
                 }
-                forward.get(posIn.get()).add(new Transformation(terminaisonIn, terminaisonOut, posOut.get()));
+                forward.get(posIn.get()).add(new Transformation(terminaisonIn, posIn.get(), terminaisonOut, posOut.get()));
 
                 //backwards
                 if (!map.containsKey(terminaisonOut)) {
@@ -78,7 +78,7 @@ public class Regles {
                     backwards.put(posOut.get(), new HashSet<>());
                 }
 
-                backwards.get(posOut.get()).add(new Transformation(terminaisonOut, terminaisonIn, posIn.get()));
+                backwards.get(posOut.get()).add(new Transformation(terminaisonOut, posOut.get(), terminaisonIn, posIn.get()));
 
             } else {
                 logger.warning("One of the provided parts of speech did not match POS in system.");

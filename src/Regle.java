@@ -40,11 +40,8 @@ public class Regle {
      * @param mot qui va etre tranforme
      * @return ensemble de tous les tranformations de "mot" selon cette regle
      */
-    public Set<Word> apply(Word mot) {
-        Set<Transformation> toApply = transformations.get(mot.getPos());
-        return toApply.stream()
-                .map(transformation -> transformation.apply(mot.getNom()))
-                .collect(Collectors.toSet());
+    public Set<Transformation> apply(Word mot) {
+        return transformations.get(mot.getPos());
     }
 
     public String toString() {
