@@ -24,10 +24,16 @@ public class Main {
             String line = userInput.nextLine();
             if (line.equals("x")) exit = true;
             System.out.println(Word.motsPossibles(line));
-            Optional<Set<Word>> applied = regles.apply(line);
+            Optional<Set<Transformation>> applied = regles.apply(line);
             if (applied.isPresent()) {
+                int max = applied.get().stream()
+                        .max((p1, p2) -> Integer.compare(p1.apply(line).toString().length(), p2.apply(line).toString().length()))
+                        .get().apply(line).toString().length();
                 applied.get().stream().forEach(
-                        el -> System.out.println(el));
+                        el -> System.out.println(el.apply(line) + "   " +
+                                String.join("",
+                                        Collections.nCopies(max - el.apply(line).toString().length(), " ")) +
+                                " avec la regle: " + el));
             } else {
                 System.out.println("Il apparait qu'il n'y a aucune regle qui correspond a ce mot.");
             }

@@ -1,19 +1,23 @@
 public class Transformation {
-    private int ending;
+    private int endLength;
+    private String ending;
     private String newEnding;
+    private PartOfSpeech pos;
     private PartOfSpeech newPos;
-    public Transformation(String ending, String newEnding, PartOfSpeech newPos) {
-        this.ending = ending.length();
+    public Transformation(String ending, PartOfSpeech pos, String newEnding, PartOfSpeech newPos) {
+        this.ending = ending;
+        this.endLength = ending.length();
+        this.pos = pos;
         this.newPos = newPos;
         this.newEnding = newEnding;
     }
 
     public Word apply(String mot) {
-        String base = mot.substring(0, mot.length() - ending);
+        String base = mot.substring(0, mot.length() - endLength);
         return new Word(base + newEnding, newPos);
     }
 
     public String toString() {
-        return ending + " -> " + newEnding + " :: " + newPos.name();
+        return "-" + ending + " comme " + pos.name() + " => -" + newEnding + " comme " + newPos.name();
     }
 }
