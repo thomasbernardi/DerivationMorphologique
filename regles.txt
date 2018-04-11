@@ -53,5 +53,3 @@ adv:ant:nom:an0ce
 adv:ante:nom:ance
 nom::adj:ain
 nom::adj:aine
-nom:nomard
-nom:;:nomarde
