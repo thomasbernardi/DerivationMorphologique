@@ -29,7 +29,8 @@ public class Word {
 
         Optional<Mot> mot = Optional.empty();
         try {
-            mot = Optional.of(systeme.requete(nom));
+            Mot requete = systeme.requete(nom);
+            if (requete != null) Optional.of(requete);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
