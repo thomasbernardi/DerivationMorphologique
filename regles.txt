@@ -32,7 +32,6 @@ nom:;nom:isme
 nom:;nom:iste
 nom:;ver:ir
 ver:;nom:iteur
-
 nom:eur;nom:euse
 nom:er;nom:ance
 nom:;nom:aire
@@ -47,8 +46,6 @@ nom:;adj:elle
 nom;adj:acé
 nom:;adj:an
 nom:;adj:ane
-
-
 adj:ant:adv:amment
 adj:ante;adv:amment
 adj:tif:nom:tivité

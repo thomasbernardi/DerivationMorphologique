@@ -50,13 +50,27 @@ public class Regles {
         while (in.hasNextLine()) {
 
             String curr = in.nextLine();
+            Optional<PartOfSpeech> posIn = Optional.empty();
+            Optional<PartOfSpeech> posOut = Optional.empty();
             String[] split = curr.split(";");
-            String[] input = split[0].split(":");
-            String[] output = split[1].split(":");
-            String terminaisonIn = input.length > 1 ? input[1] : "";
-            Optional<PartOfSpeech> posIn = PartOfSpeech.posOfString(input[0]);
-            String terminaisonOut = output.length > 1 ? output[1] : "";
-            Optional<PartOfSpeech> posOut = PartOfSpeech.posOfString(output[0]);
+            String terminaisonIn = "";
+            String terminaisonOut = "";
+            if (split.length == 2) {
+                String[] input = split[0].split(":");
+                String[] output = split[1].split(":");
+                if (input.length > 0 && output.length > 0) {
+                    terminaisonIn = input.length > 1 ? input[1] : "";
+                    posIn = PartOfSpeech.posOfString(input[0]);
+                    terminaisonOut = output.length > 1 ? output[1] : "";
+                    posOut = PartOfSpeech.posOfString(output[0]);
+                } else {
+                    logger.warning("regle malforme : " + curr);
+                }
+            } else {
+                logger.warning("regle malforme : " + curr);
+            }
+
+
 
             if (posIn.isPresent() && posOut.isPresent()) {
                 //forward
@@ -81,12 +95,14 @@ public class Regles {
                 backwards.get(posOut.get()).add(new Transformation(terminaisonOut, posOut.get(), terminaisonIn, posIn.get()));
 
             } else {
-                logger.warning("One of the provided parts of speech did not match POS in system.");
+                logger.warning("One of the provided parts of speech did not match POS in system in rule : " + curr);
             }
         }
         List<Regle> regles = map.keySet().stream()
                 .map(terminaison -> new Regle(terminaison, map.get(terminaison)))
+                .sorted((p1, p2) -> Integer.compare(p1.size(), p2.size()))
                 .collect(Collectors.toList());
+        regles.stream().forEach(el -> System.out.println(el));
         return new Regles(new HashMap<>(), regles);
     }
 

@@ -47,4 +47,8 @@ public class Regle {
     public String toString() {
         return ending + " -- " + transformations;
     }
+
+    public int size() {
+        return ending.length();
+    }
 }
