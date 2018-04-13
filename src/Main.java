@@ -23,7 +23,7 @@ public class Main {
         while (!exit) {
             String line = userInput.nextLine();
             if (line.equals("x")) exit = true;
-            System.out.println(Word.motsPossibles(line));
+
             Optional<Set<Transformation>> applied = regles.apply(line);
             if (applied.isPresent()) {
                 int max = applied.get().stream()

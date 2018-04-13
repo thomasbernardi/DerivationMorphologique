@@ -14,6 +14,7 @@ public class Regles {
 
         Optional<Set<Transformation>> result = Optional.empty();
         Set<Word> possible = Word.motsPossibles(mot);
+        System.out.println(possible);
 
         if (casParticuliers.containsKey(mot)) {
             Set<Transformation> s = new HashSet<>();
@@ -26,7 +27,7 @@ public class Regles {
                 for (Iterator<Word> it = possible.iterator(); it.hasNext();) {
                     Word w = it.next();
                     if (r.match(w)) {
-                        System.out.println(r);
+//                        System.out.println(r);
                         transformed.addAll(r.apply(w));
                         it.remove();
                     }

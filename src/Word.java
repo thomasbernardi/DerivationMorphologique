@@ -30,7 +30,7 @@ public class Word {
         Optional<Mot> mot = Optional.empty();
         try {
             Mot requete = systeme.requete(nom);
-            if (requete != null) Optional.of(requete);
+            if (requete != null) mot = Optional.of(requete);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
