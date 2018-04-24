@@ -6,101 +6,99 @@ ver:er;adj:ible :
 ver:er;nom:ant :
 ver:er;nom:ail :
 ver:er;nom:aille : ail
-ver:er;nom:atoire
-nom:er;nom:ance
-ver:ner;nom:nier
-ver:ner;nom:naison er
-ver:ner;nom:naison er
-ver:ner;nom:naille er
-ver:ner;nom:nail er
-ver:ner;natoire er
+ver:er;nom:atoire :
+nom:er;nom:ance :
+ver:ner;nom:nier : er
+ver:ner;nom:naison er :
+ver:ner;nom:naille er : aille
+ver:ner;nom:nail er : ail
+ver:ner;natoire er : oire
 
 
-ver:ger;nom:e er
-ver:ger;nom:geoire er
-ver:ger;nom:geur er
-ver:ger;nom:geant er
+ver:ger;nom:e er :
+ver:ger;nom:geoire er :
+ver:ger;nom:geur er : eur
+ver:ger;nom:geant er :
 
 
-ver:quer;nom:cation er ner ser
-ver:ser;nom:sation er ner
-ver:quer;nom:quage er ner ser
-ver:ter;nom:tement er ser ner
-ver:dir;nom:d ir
-ver:lir;nom:lissage ir
-ver:ller;nom:l er
-ver:uer;nom:cation er
-nom:ier;nom:eraie er
-nom:ier;nom:iaire er
-nom:eur;nom:euse
-nom:ale;nom:ales
-nom:al;nom:aux
-adj:ant;adv:amment ante
-adj:ante;adv:amment ant
-adj:tif;nom:tivité
-adv:ant;nom:ance ante
-adv:ante;nom:ance ant
-nom:ain;adj:aine
-nom:e;adj:ard
-nom:e;adj:arde
-adj:ard;adj:arde
-ver:er;nom:ade
-ver:es;nom:ant
-ver:es;nom:ante
-adj:ant;adv:ance
-ver:es;nom:ation
-nom:é;nom:ée
-adj:ent;nom:emment
-adj:ente;nom:emment
-nom:en;nom:enne
-nom:ent;adj:ence
-nom:ente;adj:escence
-nom:aie;ver:ayer
-nom:ai;ver:ayer aie
-nom:eau;ver:eler
-nom:elle;ver:eler
-nom:e;nom:esse
-adj:ichon;adj:ichonne
-ver:fier;ver:ifier
+ver:quer;nom:cation er ner ser : tion
+ver:ser;nom:sation er ner : tion
+ver:quer;nom:quage er ner ser : age
+ver:ter;nom:tement er ser ner :
+ver:dir;nom:d ir :
+ver:lir;nom:lissage ir :
+ver:ller;nom:l er :
+ver:uer;nom:cation er : tion
+nom:ier;nom:eraie er :
+nom:ier;nom:iaire er i
+nom:eur;nom:euse  :
+nom:ale;nom:ales al : al
+nom:al;nom:aux :
+adj:ant;adv:amment ante :
+adj:ante;adv:amment ant :
+adj:tif;nom:tivité :
+adv:ant;nom:ance ante :
+adv:ante;nom:ance ant :
+nom:ain;adj:aine :
+nom:e;adj:ard :
+nom:e;adj:arde :
+adj:ard;adj:arde :
+ver:er;nom:ade :
+ver:es;nom:ant :
+ver:es;nom:ante :
+adj:ant;adv:ance :
+ver:es;nom:ation : tion
+nom:é;nom:ée :
+adj:ent;nom:emment :
+adj:ente;nom:emment :
+nom:en;nom:enne :
+nom:ent;adj:ence :
+nom:ente;adj:escence :
+nom:aie;ver:ayer :
+nom:ai;ver:ayer aie :
+nom:eau;ver:eler :
+nom:elle;ver:eler :
+nom:e;nom:esse :
+adj:ichon;adj:ichonne :
+ver:fier;ver:ifier :
 
 
-adj:rt;adj:rtiche
+adj:rt;adj:rtiche :
 
 
-adj:;nom:eur
-nom:;adj:ique
-ver:;nom:tion
-nom:;nom:ure
-nom:;nom:ature
-nom:;adj:able
-nom:;nom:age
-adj:;adv:ante
-nom:;nom:aison
-nom:;nom:oise
-ver:;nom:ateur
-nom:;nom:isme
-nom:;nom:iste
-nom:;ver:ir
-ver:;nom:iteur²
-nom:;nom:aire
-nom:;nom:iaire
-nom:;nom:ale
-nom:;nom:al
-nom:;adj:al
-nom:;adj:ale
-nom:;adj:elle
-nom:;adj:acé
-nom:;adj:an
-nom:;adj:ane
-nom:;ver:eur
-nom:;ver:eusse
-nom:;ver:eux
-nom:;ver:euse
-ver:;ver:euse
-adj:;nom:atre
-nom:;nom:ceau
-nom:;nom:celle
-nom:;nom:eau
-nom:;nom:elle
-nom:;nom:ereau
-nom:;nom:erelle
+adj:;nom:eur :
+nom:;adj:ique :
+ver:;nom:tion :
+nom:;nom:ure :
+nom:;nom:ature :
+nom:;adj:able :
+nom:;nom:age :
+adj:;adv:ante :
+nom:;nom:aison :
+nom:;nom:oise :
+ver:;nom:ateur :
+nom:;nom:isme :
+nom:;nom:iste :
+nom:;ver:ir :
+ver:;nom:iteur :
+nom:;nom:aire :
+nom:;nom:iaire :
+nom:;nom:ale :
+nom:;nom:al :
+nom:;adj:ale :
+nom:;adj:elle :
+nom:;adj:acé :
+nom:;adj:an :
+nom:;adj:ane :
+nom:;ver:eur :
+nom:;ver:eusse :
+nom:;ver:eux :
+nom:;ver:euse :
+ver:;ver:euse :
+adj:;nom:atre :
+nom:;nom:ceau :
+nom:;nom:celle :
+nom:;nom:eau :
+nom:;nom:elle :
+nom:;nom:ereau :
+nom:;nom:erelle :
