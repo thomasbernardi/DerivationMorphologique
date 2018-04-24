@@ -1,56 +1,45 @@
-ver:er;nom:e
-ver:er;adj:ant
-ver:er;nom:e;
-ver:er;adj:ant
-ver:ner;nom:nier
-ver:er;nom:ette
-ver:er;nom:able
-ver:ger;nom:geur
-ver:ner;nom:naison
-ver:quer;nom:cation
-ver:ner;nom:naison
-ver:ser;nom:sation
-ver:quer;nom:quage
-ver:ter;nom:tement
-ver:dir;nom:d
-ver:lir;nom:lissage
-ver:er;nom:ant
-ver:ller;nom:l
-ver:uer;nom:cation
-nom:;adj:able
-ver:er;adj:ible
-nom:;nom:age
-nom:ier;nom:eraie
-nom:ier;nom:iaire
-ver:er;nom:ail
-ver:er;nom:aille
-adj:;adv:ante
-nom:;nom:aison
-nom:;nom:oise
-ver:;nom:ateur
-nom:;nom:isme
-nom:;nom:iste
-nom:;ver:ir
-ver:;nom:iteur
-nom:eur;nom:euse
+ver:er;nom:e :
+ver:er;adj:ant :
+ver:er;nom:ette :
+ver:er;nom:able :
+ver:er;adj:ible :
+ver:er;nom:ant :
+ver:er;nom:ail :
+ver:er;nom:aille : ail
+ver:er;nom:atoire
 nom:er;nom:ance
-nom:;nom:aire
-nom:;nom:iaire
-nom:;nom:ale
-nom:;nom:al
-nom:;adj:al
+ver:ner;nom:nier
+ver:ner;nom:naison er
+ver:ner;nom:naison er 
+ver:ner;nom:naille er
+ver:ner;nom:nail er
+ver:ner;natoire er
+
+
+ver:ger;nom:e er
+ver:ger;nom:geoire er
+ver:ger;nom:geur er
+ver:ger;nom:geant er
+
+
+ver:quer;nom:cation er ner ser
+ver:ser;nom:sation er ner
+ver:quer;nom:quage er ner ser
+ver:ter;nom:tement er ser ner
+ver:dir;nom:d ir
+ver:lir;nom:lissage ir
+ver:ller;nom:l er
+ver:uer;nom:cation er
+nom:ier;nom:eraie er
+nom:ier;nom:iaire er
+nom:eur;nom:euse
 nom:ale;nom:ales
 nom:al;nom:aux
-nom:;adj:ale
-nom:;adj:elle
-nom:;adj:acé
-nom:;adj:an
-nom:;adj:ane
-adj:ant;adv:amment
-adj:ante;adv:amment
+adj:ant;adv:amment ante
+adj:ante;adv:amment ant
 adj:tif;nom:tivité
-adv:ant;nom:ance
-adv:ante;nom:ance
+adv:ant;nom:ance ante
+adv:ante;nom:ance ant
 nom:ain;adj:aine
 nom:e;adj:ard
 nom:e;adj:arde
@@ -60,14 +49,6 @@ ver:es;nom:ant
 ver:es;nom:ante
 adj:ant;adv:ance
 ver:es;nom:ation
-ver:er;nom:atoire
-adj:;nom:atre
-nom:;nom:ceau
-nom:;nom:celle
-nom:;nom:eau
-nom:;nom:elle
-nom:;nom:ereau
-nom:;nom:erelle
 nom:é;nom:ée
 adj:ent;nom:emment
 adj:ente;nom:emment
@@ -75,21 +56,51 @@ nom:en;nom:enne
 nom:ent;adj:ence
 nom:ente;adj:escence
 nom:aie;ver:ayer
-nom:ai;ver:ayer
+nom:ai;ver:ayer aie
 nom:eau;ver:eler
 nom:elle;ver:eler
-adj:;nom:eur
 nom:e;nom:esse
+adj:ichon;adj:ichonne
+ver:fier;ver:ifier
+
+
+adj:rt;adj:rtiche
+
+
+adj:;nom:eur
+nom:;adj:ique
+ver:;nom:tion
+nom:;nom:ure
+nom:;nom:ature
+nom:;adj:able
+nom:;nom:age
+adj:;adv:ante
+nom:;nom:aison
+nom:;nom:oise
+ver:;nom:ateur
+nom:;nom:isme
+nom:;nom:iste
+nom:;ver:ir
+ver:;nom:iteur²
+nom:;nom:aire
+nom:;nom:iaire
+nom:;nom:ale
+nom:;nom:al
+nom:;adj:al
+nom:;adj:ale
+nom:;adj:elle
+nom:;adj:acé
+nom:;adj:an
+nom:;adj:ane
 nom:;ver:eur
 nom:;ver:eusse
 nom:;ver:eux
 nom:;ver:euse
 ver:;ver:euse
-ver:fier;ver:ifier
-nom:;adj:iche
-adj:ichon;adj:ichonne
-nom:;adj:ique
-ver:;nom:tion
-nom:;nom:ure
-nom:;nom:ature
-ver:ger;nom:geant
+adj:;nom:atre
+nom:;nom:ceau
+nom:;nom:celle
+nom:;nom:eau
+nom:;nom:elle
+nom:;nom:ereau
+nom:;nom:erelle
