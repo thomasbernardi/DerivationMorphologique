@@ -17,6 +17,10 @@ public class Transformation {
         return new Word(base + newEnding, newPos, this);
     }
 
+    public String getEnding() { return ending; }
+
+    public PartOfSpeech getPos() { return pos; }
+
     public String toString() {
         return "-" + ending + " comme " + pos.name() + " => -" + newEnding + " comme " + newPos.name();
     }

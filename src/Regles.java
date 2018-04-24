@@ -18,14 +18,19 @@ public class Regles {
 
             Set<Word> transformed = new HashSet<>();
             for (Word word : possible) {
+                Set<Transformation> transformations = new HashSet<>();
+                Set<String> masked = new HashSet<>();
                 for (Regle regle : regles) {
                     if (regle.match(word)) {
-                        transformed.addAll(regle.apply(word)
-                                .stream()
-                                .map(t -> t.apply(word.getNom()))
-                                .collect(Collectors.toSet()));
+                        transformations.addAll(regle.apply(word));
+                        masked.addAll(regle.masked().isPresent() ? regle.masked().get().get(word.getPos()) : new HashSet<>());
                     }
                 }
+                transformed.addAll(
+                        transformations.stream()
+                        .filter(el -> !masked.contains(el.getEnding()))
+                        .map(t -> t.apply(word.getNom()))
+                        .collect(Collectors.toSet()));
             }
 //            for (int i = 0; i < regles.size() && !result.isPresent(); i++) {
 //                Regle r = regles.get(i);
@@ -52,6 +57,7 @@ public class Regles {
     public static Regles lectureRegles(Scanner in) {
         Logger logger = Logger.getLogger("LectureRegles");
         Map<String, Map<PartOfSpeech, Set<Transformation>>> map = new HashMap<>();
+        Map<String, Map<PartOfSpeech, Set<String>>> maskedEndings = new HashMap<>();
 
         while (in.hasNextLine()) {
 
@@ -61,7 +67,9 @@ public class Regles {
             String[] split = curr.split(";");
             String terminaisonIn = "";
             String terminaisonOut = "";
-            if (split.length == 2) {
+            String[] maskedForward = {};
+            String[] maskedBackwards = {};
+            if (split.length == 3) {
                 String[] input = split[0].split(":");
                 String[] output = split[1].split(":");
                 if (input.length > 0 && output.length > 0) {
@@ -69,6 +77,10 @@ public class Regles {
                     posIn = PartOfSpeech.posOfString(input[0]);
                     terminaisonOut = output.length > 1 ? output[1] : "";
                     posOut = PartOfSpeech.posOfString(output[0]);
+
+                    String[] maskedSplit = split[2].split(":");
+                    if (maskedSplit.length > 0) maskedForward = maskedSplit[0].split("[ ]+");
+                    if (maskedSplit.length > 1) maskedBackwards = maskedSplit[1].split("[ ]+");
                 } else {
                     logger.warning("regle malforme : " + curr);
                 }
@@ -100,12 +112,36 @@ public class Regles {
 
                 backwards.get(posOut.get()).add(new Transformation(terminaisonOut, posOut.get(), terminaisonIn, posIn.get()));
 
+                //forward masks
+                if (!maskedEndings.containsKey(terminaisonIn)) {
+                    maskedEndings.put(terminaisonIn, new HashMap<>());
+                }
+                Map<PartOfSpeech, Set<String>> forwardMask = maskedEndings.get(terminaisonIn);
+                if (!forwardMask.containsKey(posIn.get())) {
+                    forwardMask.put(posIn.get(), new HashSet<>());
+                }
+                forwardMask.get(posIn.get()).addAll(Arrays.asList(maskedForward).stream()
+                        .filter(el -> el.length() > 0)
+                        .collect(Collectors.toList()));
+
+                //backward masks
+                if (!maskedEndings.containsKey(terminaisonOut)) {
+                    maskedEndings.put(terminaisonOut, new HashMap<>());
+                }
+                Map<PartOfSpeech, Set<String>> backwardsMask = maskedEndings.get(terminaisonOut);
+                if (!backwardsMask.containsKey(posOut.get())) {
+                    backwardsMask.put(posOut.get(), new HashSet<>());
+                }
+                backwardsMask.get(posOut.get()).addAll(Arrays.asList(maskedBackwards).stream()
+                        .filter(el -> el.length() > 0)
+                        .collect(Collectors.toList()));
+
             } else {
                 logger.warning("One of the provided parts of speech did not match POS in system in rule : " + curr);
             }
         }
         List<Regle> regles = map.keySet().stream()
-                .map(terminaison -> new Regle(terminaison, map.get(terminaison)))
+                .map(terminaison -> new Regle(terminaison, map.get(terminaison), maskedEndings.get(terminaison)))
                 .sorted((p1, p2) -> Integer.compare(p1.size(), p2.size()))
                 .collect(Collectors.toList());
         regles.stream().forEach(el -> System.out.println(el));

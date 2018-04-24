@@ -1,4 +1,5 @@
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.*;
 import java.util.stream.Collectors;
@@ -7,12 +8,17 @@ public class Regle {
     private String ending;
     private String pattern;
     private Map<PartOfSpeech, Set<Transformation>> transformations;
-    private Map<PartOfSpeech, Set<String>> masked;
+    private Optional<Map<PartOfSpeech, Set<String>>> masked;
 
-    public Regle(String ending, Map<PartOfSpeech, Set<Transformation>> transformations) {
+    public Regle(String ending, Map<PartOfSpeech, Set<Transformation>> transformations, Map<PartOfSpeech, Set<String>> masked) {
         this.ending = ending;
         pattern = "[a-zA-Z]*" + ending;
         this.transformations = transformations;
+        if (masked != null) {
+            this.masked = Optional.of(masked);
+        } else {
+            this.masked = Optional.empty();
+        }
     }
 
     /**
@@ -46,12 +52,13 @@ public class Regle {
     }
 
     public String toString() {
-        return ending + " -- " + transformations;
+        return ending + " -- " + transformations + " -- " + (masked.isPresent() ? masked.get() : "None");
     }
 
     public String ending() { return ending; }
 
-    public Map<PartOfSpeech, Set<String>> masked() { return masked; }
+    public Optional<Map<PartOfSpeech, Set<String>>> masked() { return masked; }
+
     public int size() {
         return ending.length();
     }
