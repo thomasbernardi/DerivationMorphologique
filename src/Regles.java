@@ -10,35 +10,39 @@ public class Regles {
         this.regles = regles;
     }
 
-    public Optional<Set<Transformation>> apply (String mot) {
+    public Optional<Set<Word>> apply (String mot) {
 
-        Optional<Set<Transformation>> result = Optional.empty();
+        Optional<Set<Word>> result = Optional.empty();
         Set<Word> possible = Word.motsPossibles(mot);
         System.out.println(possible);
 
-        if (casParticuliers.containsKey(mot)) {
-            Set<Transformation> s = new HashSet<>();
-            s.add(casParticuliers.get(mot));
-            result = Optional.of(s);
-        } else {
-            Set<Transformation> transformed = new HashSet<>();
-            for (int i = 0; i < regles.size() && !result.isPresent(); i++) {
-                Regle r = regles.get(i);
-                for (Iterator<Word> it = possible.iterator(); it.hasNext();) {
-                    Word w = it.next();
-                    if (r.match(w)) {
-//                        System.out.println(r);
-                        transformed.addAll(r.apply(w));
-                        //add logic to remove POS when needed perhaps?
-                        //it.remove();
+            Set<Word> transformed = new HashSet<>();
+            for (Word word : possible) {
+                for (Regle regle : regles) {
+                    if (regle.match(word)) {
+                        transformed.addAll(regle.apply(word)
+                                .stream()
+                                .map(t -> t.apply(word.getNom()))
+                                .collect(Collectors.toSet()));
                     }
                 }
             }
+//            for (int i = 0; i < regles.size() && !result.isPresent(); i++) {
+//                Regle r = regles.get(i);
+//                for (Iterator<Word> it = possible.iterator(); it.hasNext();) {
+//                    Word w = it.next();
+//                    if (r.match(w)) {
+////                      System.out.println(r);
+//                        transformed.addAll(r.apply(w));
+//                        //add logic to remove POS when needed perhaps?
+//                        //it.remove();
+//                    }
+//                }
+//            }
             if (!transformed.isEmpty()) {
                 result = Optional.of(transformed);
             }
-        }
-        return result;
+            return result;
     }
 
     public String toString() {

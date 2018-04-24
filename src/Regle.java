@@ -7,6 +7,7 @@ public class Regle {
     private String ending;
     private String pattern;
     private Map<PartOfSpeech, Set<Transformation>> transformations;
+    private Map<PartOfSpeech, Set<String>> masked;
 
     public Regle(String ending, Map<PartOfSpeech, Set<Transformation>> transformations) {
         this.ending = ending;
@@ -37,7 +38,7 @@ public class Regle {
 
     /**
      *
-     * @param mot qui va etre tranforme
+     * @param mot Word qui va etre tranforme
      * @return ensemble de tous les tranformations de "mot" selon cette regle
      */
     public Set<Transformation> apply(Word mot) {
@@ -48,6 +49,9 @@ public class Regle {
         return ending + " -- " + transformations;
     }
 
+    public String ending() { return ending; }
+
+    public Map<PartOfSpeech, Set<String>> masked() { return masked; }
     public int size() {
         return ending.length();
     }

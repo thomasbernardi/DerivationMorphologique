@@ -14,7 +14,7 @@ public class Transformation {
 
     public Word apply(String mot) {
         String base = mot.substring(0, mot.length() - endLength);
-        return new Word(base + newEnding, newPos);
+        return new Word(base + newEnding, newPos, this);
     }
 
     public String toString() {
