@@ -10,7 +10,7 @@ ver:er;nom:atoire
 nom:er;nom:ance
 ver:ner;nom:nier
 ver:ner;nom:naison er
-ver:ner;nom:naison er 
+ver:ner;nom:naison er
 ver:ner;nom:naille er
 ver:ner;nom:nail er
 ver:ner;natoire er
