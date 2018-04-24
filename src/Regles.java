@@ -29,7 +29,8 @@ public class Regles {
                     if (r.match(w)) {
 //                        System.out.println(r);
                         transformed.addAll(r.apply(w));
-                        it.remove();
+                        //add logic to remove POS when needed perhaps?
+                        //it.remove();
                     }
                 }
             }
