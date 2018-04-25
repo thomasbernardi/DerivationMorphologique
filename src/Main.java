@@ -42,10 +42,26 @@ public class Main {
                         .max((p1, p2) -> Integer.compare(p1.toString().length(), p2.toString().length()))
                         .get().toString().length();
                 applied.get().stream().forEach(
-                        el -> System.out.println(el + "   " +
-                                String.join("",
-                                        Collections.nCopies(max - el.toString().length(), " ")) +
-                                " avec la regle: " + el.getTransformation()));
+                        el -> {
+                            System.out.println(el + "   " +
+                                    String.join("",
+                                            Collections.nCopies(max - el.toString().length(), " ")) +
+                                    " avec la regle: " + el.getTransformation());
+                            System.out.println(el.wordExists() ? "Such a word exists" : "DNE");
+                            if (el.appliedTransformation().isPresent()) {
+                                List<String> semantiquePossible = el.appliedTransformation().get().getSemantique();
+                                Optional<List<Boolean>> semantiqueVerifie = el.compareSemantique();
+                                if (semantiqueVerifie.isPresent()) {
+                                    for (int i = 0; i < semantiquePossible.size(); i++) {
+                                        System.out.println("semantique attendu : " + semantiquePossible.get(i) +
+                                                " -::- " + (semantiqueVerifie.get().get(i) ? "est valide" : "n'est pas valide"));
+                                    }
+                                } else {
+                                    System.out.println("Pas de semantique specifie");
+                                }
+
+                            }
+                        });
             } else {
                 System.out.println("Il apparait qu'il n'y a aucune regle qui correspond a ce mot.");
             }

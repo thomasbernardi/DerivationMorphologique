@@ -28,6 +28,8 @@ public class Word {
 
     public String toString() { return nom + " " + this.pos.name(); }
 
+    public Optional<Transformation> appliedTransformation() { return applied; }
+
     public String getTransformation() {
         if (applied.isPresent()) {
             return applied.get().toString();
@@ -36,11 +38,37 @@ public class Word {
         }
     }
 
+    public boolean wordExists() {
+        Set<Word> words = motsPossibles(this.nom);
+        if (words.size() == 0) {
+            return false;
+        } else {
+            boolean exists = false;
+            for (Word word : words) {
+                exists = exists || this.getPos().equals(word.getPos());
+            }
+            return exists;
+        }
+    }
+
+    public Optional<List<Boolean>> compareSemantique() {
+        Optional<Mot> mot = getMot(getNom());
+        if (applied.isPresent() && mot.isPresent()){
+            List<Boolean> result = applied.get().getSemantique()
+                    .stream()
+                    .map(el -> !mot.get().getRelations_sortantes().get(el).isEmpty())
+                    .collect(Collectors.toList());
+            return Optional.of(result);
+        } else {
+            return Optional.empty();
+        }
+    }
+
     public PartOfSpeech getPos() {
         return pos;
     }
 
-    public static Set<Word> motsPossibles(String nom) {
+    public static Optional<Mot> getMot(String nom) {
         RequeterRezo systeme = new RequeterRezo("36h", 3000);
 
         Optional<Mot> mot = Optional.empty();
@@ -52,8 +80,19 @@ public class Word {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return mot;
+    }
+
+    public static Set<Word> motsPossibles(String nom) {
+
+        Optional<Mot> mot = getMot(nom);
+
         if (mot.isPresent()) {
-            String lemma = mot.get().getRelations_sortantes().get("r_lemma").get(0).getTerme();
+            List<Terme> lemmaList = mot.get().getRelations_sortantes().get("r_lemma");
+            String lemma = null;
+            if (lemmaList != null && lemmaList.size() > 0) {
+                lemma = lemmaList.get(0).getTerme();
+            }
             Set<Word> lemmas = null;
             if (lemma != null && !nom.equals(lemma)) {
                 lemmas = motsPossibles(lemma);
