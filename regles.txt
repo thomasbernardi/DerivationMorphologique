@@ -46,7 +46,7 @@ nom:ale;nom:ales; al : al ; :
 nom:al;nom:aux; : ; :
 adj:ant;adv:amment; ante : ; :
 adj:ante;adv:amment; ant : ; :
-adj:tif;nom:tivité; : ; : 
+adj:tif;nom:tivité; : ; :
 adv:ant;nom:ance; ante : ; :
 adv:ante;nom:ance; ant : ; :
 nom:ain;adj:aine; : ; :
