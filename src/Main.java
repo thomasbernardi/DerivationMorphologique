@@ -35,10 +35,9 @@ public class Main {
         //System.out.println(regles);
         System.out.println("Gimme some words...");
 
-        boolean exit = false;
-        while (!exit) {
+        while (true) {
             String line = userInput.nextLine();
-            if (line.equals("x")) exit = true;
+            if (line.equals("x")) break;
 
             Optional<Set<Word>> applied = regles.apply(line);
             if (applied.isPresent()) {
@@ -55,7 +54,8 @@ public class Main {
                             if (el.appliedTransformation().isPresent()) {
                                 Optional<List<String>> semantiquePossible = el.getSemantique();
                                 Optional<List<Boolean>> semantiqueVerifie = el.compareSemantique();
-                                if (semantiquePossible.isPresent() && semantiqueVerifie.isPresent()) {
+                                if (semantiquePossible.isPresent() && semantiqueVerifie.isPresent() &&
+                                        semantiquePossible.get().size() > 0) {
                                     for (int i = 0; i < semantiquePossible.get().size(); i++) {
                                         System.out.println("semantique attendu : " + semantiquePossible.get().get(i) +
                                                 " -::- " + (semantiqueVerifie.get().get(i) ? "est valide" : "n'est pas valide"));
@@ -65,10 +65,12 @@ public class Main {
                                 }
 
                             }
+                            System.out.println();
                         });
             } else {
                 System.out.println("Il apparait qu'il n'y a aucune regle qui correspond a ce mot.");
             }
+            System.out.println("Next word...");
         }
 
 
