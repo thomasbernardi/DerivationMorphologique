@@ -51,12 +51,22 @@ public class Word {
         }
     }
 
+    public Optional<List<String>> getSemantique() {
+        if (applied.isPresent()) {
+            return Optional.of(applied.get().getSemantique());
+        } else {
+            return Optional.empty();
+        }
+    }
+
     public Optional<List<Boolean>> compareSemantique() {
         Optional<Mot> mot = getMot(getNom());
         if (applied.isPresent() && mot.isPresent()){
             List<Boolean> result = applied.get().getSemantique()
                     .stream()
-                    .map(el -> !mot.get().getRelations_sortantes().get(el).isEmpty())
+                    .map(el -> (!mot.get().getRelations_sortantes().isEmpty() &&
+                            mot.get().getRelations_sortantes().containsKey(el) &&
+                            !mot.get().getRelations_sortantes().get(el).isEmpty()))
                     .collect(Collectors.toList());
             return Optional.of(result);
         } else {

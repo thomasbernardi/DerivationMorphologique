@@ -23,6 +23,10 @@ import RequeterRezo.Mot;
 public class Main {
     public static void main(String args[]) throws IOException, MalformedURLException, InterruptedException{
         Scanner userInput = new Scanner(System.in);
+//        System.out.println("Test:");
+//        String test = userInput.nextLine();
+//        String[] arr = test.split(":");
+//        System.out.println(Arrays.toString(arr));
         System.out.println("Enter rules file:");
         String filename = userInput.nextLine();
         FileInputStream fichierRegles = new FileInputStream(filename);
@@ -49,11 +53,11 @@ public class Main {
                                     " avec la regle: " + el.getTransformation());
                             System.out.println(el.wordExists() ? "Such a word exists" : "DNE");
                             if (el.appliedTransformation().isPresent()) {
-                                List<String> semantiquePossible = el.appliedTransformation().get().getSemantique();
+                                Optional<List<String>> semantiquePossible = el.getSemantique();
                                 Optional<List<Boolean>> semantiqueVerifie = el.compareSemantique();
-                                if (semantiqueVerifie.isPresent()) {
-                                    for (int i = 0; i < semantiquePossible.size(); i++) {
-                                        System.out.println("semantique attendu : " + semantiquePossible.get(i) +
+                                if (semantiquePossible.isPresent() && semantiqueVerifie.isPresent()) {
+                                    for (int i = 0; i < semantiquePossible.get().size(); i++) {
+                                        System.out.println("semantique attendu : " + semantiquePossible.get().get(i) +
                                                 " -::- " + (semantiqueVerifie.get().get(i) ? "est valide" : "n'est pas valide"));
                                     }
                                 } else {

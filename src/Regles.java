@@ -67,9 +67,14 @@ public class Regles {
             String[] split = curr.split(";");
             String terminaisonIn = "";
             String terminaisonOut = "";
+
             String[] maskedForward = {};
             String[] maskedBackwards = {};
-            if (split.length == 3) {
+
+            String[] semForward = {};
+            String[] semBackwards = {};
+
+            if (split.length == 4) {
                 String[] input = split[0].split(":");
                 String[] output = split[1].split(":");
                 if (input.length > 0 && output.length > 0) {
@@ -79,8 +84,12 @@ public class Regles {
                     posOut = PartOfSpeech.posOfString(output[0]);
 
                     String[] maskedSplit = split[2].split(":");
+                    String[] semSplit = split[3].split(":");
+
                     if (maskedSplit.length > 0) maskedForward = maskedSplit[0].split("[ ]+");
                     if (maskedSplit.length > 1) maskedBackwards = maskedSplit[1].split("[ ]+");
+                    if (semSplit.length > 0) semBackwards = semSplit[0].split("[ ]+");
+                    if (semSplit.length > 1) semForward = semSplit[1].split("[ ]+");
                 } else {
                     logger.warning("regle malforme : " + curr);
                 }
@@ -99,7 +108,8 @@ public class Regles {
                 if (!forward.containsKey(posIn.get())) {
                     forward.put(posIn.get(), new HashSet<>());
                 }
-                forward.get(posIn.get()).add(new Transformation(terminaisonIn, posIn.get(), terminaisonOut, posOut.get()));
+                forward.get(posIn.get()).add(new Transformation(terminaisonIn, posIn.get(),
+                        terminaisonOut, posOut.get(), Arrays.asList(semForward)));
 
                 //backwards
                 if (!map.containsKey(terminaisonOut)) {
@@ -110,7 +120,8 @@ public class Regles {
                     backwards.put(posOut.get(), new HashSet<>());
                 }
 
-                backwards.get(posOut.get()).add(new Transformation(terminaisonOut, posOut.get(), terminaisonIn, posIn.get()));
+                backwards.get(posOut.get()).add(new Transformation(terminaisonOut, posOut.get(),
+                        terminaisonIn, posIn.get(), Arrays.asList(semBackwards)));
 
                 //forward masks
                 if (!maskedEndings.containsKey(terminaisonIn)) {

@@ -10,7 +10,8 @@ public class Regle {
     private Map<PartOfSpeech, Set<Transformation>> transformations;
     private Optional<Map<PartOfSpeech, Set<String>>> masked;
 
-    public Regle(String ending, Map<PartOfSpeech, Set<Transformation>> transformations, Map<PartOfSpeech, Set<String>> masked) {
+    public Regle(String ending, Map<PartOfSpeech, Set<Transformation>> transformations,
+                 Map<PartOfSpeech, Set<String>> masked) {
         this.ending = ending;
         pattern = "[a-zA-Z]*" + ending;
         this.transformations = transformations;
