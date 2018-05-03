@@ -66,7 +66,10 @@ public class Word {
                     .stream()
                     .map(el -> (!mot.get().getRelations_sortantes().isEmpty() &&
                             mot.get().getRelations_sortantes().containsKey(el) &&
-                            !mot.get().getRelations_sortantes().get(el).isEmpty()))
+                            !mot.get().getRelations_sortantes().get(el).isEmpty()
+                            && (el.equals("r_isa") ? mot.get().getRelations_sortantes().get(el).stream()
+                                    .map(terme -> terme.getTerme().equals("personne"))
+                                    .reduce(false, (acc, b) -> acc || b) : true)))
                     .collect(Collectors.toList());
             return Optional.of(result);
         } else {
