@@ -34,7 +34,7 @@ ver:quer;nom:cation; er ner ser : tion ; :
 ver:quer;nom:cant; er ner ser : ; : r_isa
 ver:ser;nom:sation; er ner : tion ; :
 ver:quer;nom:quage; er ner ser : age ; :
-ver:ter;nom:tement; er ser ner : ; :
+ver:ter;nom:tement; ser ner : ; :
 ver:dir;nom:d; ir : ; :
 ver:lir;nom:lissage; ir : ; :
 ver:ller;nom:l; er : ; :
